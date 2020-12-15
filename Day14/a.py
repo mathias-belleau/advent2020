@@ -99,9 +99,9 @@ def read_input(filename):
 
 def main():
     global addresses
-    #unparsed = read_input("test")
+    unparsed = read_input("test")
     #unparsed = read_input("test2.txt")
-    unparsed = read_input("input")
+    #unparsed = read_input("input")
     memories = make_memories(unparsed)
     apply_masks(memories)
 
