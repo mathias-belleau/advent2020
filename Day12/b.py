@@ -81,10 +81,10 @@ class Ship:
             swap = [self.waypointNorth, self.waypointEast * -1]
             self.wpDirection = 'W'
         elif self.wpDirection == 'W':
-            swap = [self.waypointNorth, abs(self.waypointEast)]
+            swap = [self.waypointNorth, self.waypointEast * -1]
             self.wpDirection = 'N'
         elif self.wpDirection == 'N':
-            swap = [abs(self.waypointNorth), abs(self.waypointEast)]
+            swap = [self.waypointNorth, self.waypointEast * -1]
             self.wpDirection = 'E'
         else:
             print("PRINT ERROR :" + self.wpDirection)
@@ -96,7 +96,7 @@ class Ship:
         # east 10,4
         # north -4,10 -> swap, *-1, /
         # west -10,-4 -> swap, *-1 /
-        # south 4,10 -> swap, abs/abs
+        # south 4,-10 -> swap, abs/abs
         # east -> swap
 
         # print('\ndirection: ' + self.wpDirection +  ' -- ' + str(self.waypointEast) + '/' + str(self.waypointNorth))
@@ -110,11 +110,11 @@ class Ship:
             self.wpDirection = 'W'
         elif self.wpDirection == 'W':
             # print("rotating south")
-            swap = [abs(self.waypointNorth), abs(self.waypointEast)]
+            swap = [self.waypointNorth * -1, self.waypointEast]
             self.wpDirection = 'S'
         elif self.wpDirection == 'S':
             # print("rotating east")
-            swap = [self.waypointNorth, self.waypointEast]
+            swap = [self.waypointNorth * -1, self.waypointEast]
             self.wpDirection = 'E'
         
         # print(swap)
@@ -138,8 +138,8 @@ def read_input(filename):
 
 
 def main():
-    unparsed = read_input("test")
-    #unparsed = read_input("input")
+    #unparsed = read_input("test")
+    unparsed = read_input("input")
     parsed = parse_instructions(unparsed)
 
     shipA = Ship()
