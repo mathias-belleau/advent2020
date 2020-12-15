@@ -1,8 +1,10 @@
+addresses = {}
+
 class Memory():
     def __init__(self, mask, inputs):
         self.mask = mask
         self.inputs = inputs
-        self.addresses = {}
+        #self.addresses = {}
 
     def apply_mask(self):
         for inp in self.inputs:
@@ -17,15 +19,17 @@ class Memory():
 
 
     def write_memory(self):
+        global addresses
         for inp in self.inputs:
-            self.addresses[inp[0]] = int(inp[1], 2)
+            addresses[inp[0]] = int(inp[1], 2)
 
     def get_memory_sum(self):
+        global addresses
         total = 0
         print('---------')
-        for key in self.addresses.keys():
-            print(self.addresses[key])
-            total += self.addresses[key]
+        for key in addresses.keys():
+            print(addresses[key])
+            total += addresses[key]
         print(total)
         return total
 
@@ -94,14 +98,14 @@ def read_input(filename):
 
 
 def main():
-    unparsed = read_input("test")
+    global addresses
+    #unparsed = read_input("test")
     #unparsed = read_input("test2.txt")
-    #unparsed = read_input("input")
+    unparsed = read_input("input")
     memories = make_memories(unparsed)
     apply_masks(memories)
 
     get_sum(memories)
-   
 
 if __name__ == "__main__":
     main()
